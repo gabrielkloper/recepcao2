@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/visitante', [VisitanteController::class, 'index'])->name('visitante.index');
     Route::get('/visitante/create', [VisitanteController::class, 'create'])->name('visitante.create');
     Route::post('/visitante/store', [VisitanteController::class, 'store'])->name('visitante.store');
-    Route::get('/visitante/edit', [VisitanteController::class, 'edit'])->name('visitante.edit');
+    Route::get('/visitante/edit/{visitante}', [VisitanteController::class, 'edit'])->name('visitante.edit');
     Route::patch('/visitante/update/{visitante}', [VisitanteController::class, 'update'])->name('visitante.update');
     Route::delete('/visitante/destroy/{visitante}', [VisitanteController::class, 'destroy'])->name('visitante.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
