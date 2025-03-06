@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VisitanteRequest;
 use App\Models\Visitante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class VisitanteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(VisitanteRequest $request)
     {
        DB::beginTransaction();
        try{
@@ -48,11 +49,10 @@ class VisitanteController extends Controller
        $visitante->numero = $request->numero;
        $visitante->nome_responsavel = $request->nome_responsavel;
        $visitante->cpf_responsavel = $request->cpf_responsavel;
-       $visitante->nome_responsavel2 = $request->nome_responsavel2;
-       $visitante->cpf_responsavel2 = $request->cpf_responsavel2;
-       $visitante->data_cadastro = $request->data_cadastro;
+       $visitante->data_cadastro = now();
        $visitante->foto = $request->foto;
        $visitante->save();
+    //    dd($visitante);
 
        DB::commit();
 
